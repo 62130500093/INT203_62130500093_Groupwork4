@@ -14,6 +14,12 @@ const app = {
         }
     },
     methods: {
+        next(){
+            this.toggleHeart(this.index+1);
+        },
+        previous(){
+            this.toggleHeart(this.index-1);
+        },
         toggleHeart(index) {
             this.gallerys[index].done = !this.gallerys[index].done;
             this.index = index;

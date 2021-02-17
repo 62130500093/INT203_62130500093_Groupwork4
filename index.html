@@ -33,9 +33,14 @@
       <button @click="toggleBar" v-show="showSearch"><span class="material-icons">
           search
         </span></button>
-      <span v-show="showCanvas" class="px-8 pb-8 pt-2 bg-black text-right">
-        <button class="text-white" @click="hideCanvas">X</button>
-          <img :src="showItems.image" width="400" height="400">
+      <span v-show="showCanvas" class="px-8 pb-7 pt-2 bg-black text-right">
+        <button class="text-white text-2xl" @click="hideCanvas">X</button>
+        <img :src="showItems.image" width="400" height="400">
+        <div class="flex justify-between">
+          <button class="text-white text-2xl" @click="previous">
+            < </button>
+              <button class="text-white text-2xl" @click="next">></button>
+        </div>
       </span>
 
     </div>
