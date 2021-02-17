@@ -21,6 +21,8 @@ const app = {
             this.toggleHeart(this.index-1);
         },
         toggleHeart(index) {
+            if(this.gallerys[index].show == false){}
+            else{
             this.gallerys[index].done = !this.gallerys[index].done;
             this.index = index;
             for (let i = 0; i < this.gallerys.length; i++) {
@@ -34,6 +36,7 @@ const app = {
                 this.showCanvas = false;
                 this.showSearch = true;
             }
+        }
         },
         hideCanvas(){
             this.showSearch = true;
@@ -72,7 +75,11 @@ const app = {
     },
     computed: {
         calculated() {
-            return this.gallerys.length;
+            let tempCount = 0;
+            for(let i = 0 ; i < this.gallerys.length ; i++){
+                if(this.gallerys[i].show == true) tempCount++; 
+            }
+            return tempCount;
         },
         checkItems() {
             let count = 0
