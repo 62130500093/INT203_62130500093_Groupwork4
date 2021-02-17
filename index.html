@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Vue Js - HelloWorld App</title>
+
+  <!-- https://google.github.io/material-design-icons/#icon-font-for-the-web -->
+  <!-- Using via Google Web Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <!-- https://tailwindcss.com/docs/installation -->
+  <!-- Using Tailwind via CDN -->
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+
+  <!-- https://v3.vuejs.org/guide/installation.html#release-notes -->
+  <!-- Vue CDN -->
+  <script src="https://unpkg.com/vue@next"></script>
+
+</head>
+
+<body>
+  <div id="app" class="flex flex-col mx-auto items-center">
+    <h1 class="text-2xl font-bold mt-5">Photo Gallery (<span>{{calculated}}</span>)</h1>
+
+    <div class="flex justify-between space-x-2 mt-5">
+      <div v-show="showBar">
+        <input type="text" v-model="inputTask" placeholder="Please enter text for searching photos "
+          class="p-2 bg-white rounded flex-1 w-96" @keyup.enter="searchPicture">
+        <button @click="toggleBar" class="bg-blue-500 text-white  py-2 px-3 rounded ml-2">Cancel</button>
+      </div>
+      <button @click="toggleBar" v-show="showSearch"><span class="material-icons">
+          search
+        </span></button>
+      <span v-show="showCanvas" class="px-8 pb-8 pt-2 bg-black text-right">
+        <button class="text-white" @click="hideCanvas">X</button>
+          <img :src="showItems.image" width="400" height="400">
+      </span>
+
+    </div>
+    <ul>
+      <li v-for="(gallery,index) in gallerys" class="flex items-center mt-5" v-show="gallery.show">
+        <button v-on:click="toggleHeart(index)">
+          <img :src="gallery.image" width="200" height="200">
+        </button>
+        <span class="ml-4 text-xl font-medium w-80">{{gallery.title}}</span>
+        <span v-show="gallery.done"><img :src="heart"></span>
+      </li>
+      <li class="mt-10 font-bold text-2xl">{{ checkItems }}</li>
+
+    </ul>
+  </div>
+
+  <!-- my main.js -->
+  <script src="./main.js"></script>
+</body>
+
+</html>
